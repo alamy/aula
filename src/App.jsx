@@ -7,6 +7,7 @@ import Usuario from "./pages/Usuario";
 import { PrivateRoute } from "./privateRoute";
 import ContadorPage from "./pages/ContadorPage";
 import ContadoresPage from "./pages/ContadoresPage";
+import DataAtualPage from "./pages/DataAtualPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/about" element={<AboutPages />} />
         <Route path="/contador" element={<ContadorPage />} />
         <Route path="/contadores" element={<ContadoresPage />} />
+        <Route path="/dataatual" element={<DataAtualPage />} />
       </Routes>
     </Router>
   );
