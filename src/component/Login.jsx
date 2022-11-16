@@ -1,4 +1,4 @@
-import './../styles/components/Login.sass';
+import './../styles/components/login.sass';
 
 function Login() {
    
