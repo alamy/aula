@@ -5,6 +5,7 @@ import AboutPages from './pages/AboutPage';
 import NavBar from './component/NavBar';
 import Usuario from './pages/Usuario';
 import { PrivateRoute } from './privateRoute';
+import CountPage from './pages/CountPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/usuario" element={<PrivateRoute><Usuario /></PrivateRoute>} />
           <Route path="/about" element={<AboutPages />} />
+          <Route path="/contador" element={<CountPage />} />
         </Routes>
       </Router>
   );
