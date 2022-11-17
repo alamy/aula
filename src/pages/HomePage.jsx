@@ -1,7 +1,7 @@
-import './HomePage.css';
 import Login from '../component/Login';
 
-function HomePage() {
+function HomePage() {    
+
     return (
         <div>
             <Login />

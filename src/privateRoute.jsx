@@ -1,11 +1,13 @@
+import { useContext } from 'react';
 import { Navigate } from 'react-router-dom'
 
 export function PrivateRoute({children}) {
 const usuario = localStorage.getItem('usuario');
 const password = localStorage.getItem('password');
-const user = false
-    if(usuario === 'alamy' && password === 'luna28') {
-        this.user = true
+
+    localStorage.setItem('logged',false)
+    if(usuario === 'wrm@cin.ufpe.br' && password === '123') {
+        localStorage.setItem('logged',true)
     }  
-    return user ? children : <Navigate to="/home" />;
+    return localStorage.getItem('logged') ? children : <Navigate to="/" />;
 }

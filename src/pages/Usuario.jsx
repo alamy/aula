@@ -1,5 +1,3 @@
-import './Usuario.css'
-
 function Usuario() {
 
     const nome = {
