@@ -1,65 +1,64 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import Link from '@mui/material/Link';
-import { Theme } from '../theme';
-import Profile from './Prifile';
-import { LoginContext } from '../contexts/loginContext';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
+import { Theme } from "../theme";
+import Profile from "./Prifile";
+import { Stack } from "@mui/material";
 
 const pages = [
-  {menu:'Home',link:'/'}, 
-  {menu:'Quem somos',link:'/about'},
-  {menu:'Usuário',link:'/usuario'},
-  {menu:'Contador',link:'/atividades'}
+  { menu: "Home", link: "/" },
+  { menu: "Quem somos", link: "/about" },
+  { menu: "Usuário", link: "/usuario" },
+  { menu: "Atividades", link: "/atividades" },
 ];
 
-
-
 function NavBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);  
-  
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
   return (
-    <AppBar position="static" style={{backgroundColor: Theme.palette.primary.main}}>
+    <AppBar
+      position="static"
+      style={{ backgroundColor: Theme.palette.primary.main }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            to="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             WANDERSON
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -74,28 +73,36 @@ function NavBar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
                 <MenuItem key={page.menu} onClick={handleCloseNavMenu}>
-                  <Link href={page.link} underline='none'>{page.menu}</Link>
+                  <Link
+                    color="secondary"
+                    component="button"
+                    to={page.link}
+                    underline="none"
+                    variant="h1"
+                  >
+                    {page.menu}
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -103,32 +110,38 @@ function NavBar() {
             href=""
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             WANDERSON
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page.menu}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-                href={page.link}
-              >
-                {page.menu}
-              </Button>
+              <Stack key={page.menu} spacing={2} m={2} direction="row">
+                <Typography variant="button">
+                  <Link
+                    style={{ color: Theme.palette.primary.contrastText }}
+                    key={page.menu}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                    to={page.link}
+                    variant="button"
+                    underline="hover"
+                  >
+                    {page.menu}
+                  </Link>
+                </Typography>
+              </Stack>
             ))}
           </Box>
-          
+
           <Profile />
-          
         </Toolbar>
       </Container>
     </AppBar>

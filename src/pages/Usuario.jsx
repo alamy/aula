@@ -1,19 +1,19 @@
-function Usuario() {
+import { Box } from "@mui/material";
+import { ProfileBox } from "../component/ProfileBox";
 
-    const nome = {
-        firtName: "aldalberto",
-        secondName: "vitalino"
-    }
-    
-    return (
-        <p>{name(nome)} </p>
-    )
-    function name(text){
-        return text.firtName + ' ' + text.secondName;
-    }
-   
+function Usuario() {
+  return (
+    <>
+      <Box
+        display="flex"
+        height="100vh"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <ProfileBox />
+      </Box>
+    </>
+  );
 }
 
-
-
-export default Usuario
+export default Usuario;
