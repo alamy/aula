@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
+import ApiPage from './pages/ApiPage';
 import AboutPages from './pages/AboutPage';
 import NavBar from './component/NavBar';
 import Usuario from './pages/Usuario';
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" element={<AboutPages />} />
           <Route path="/ref" element={<Ref />} />
           <Route path="/contador" element={<ContadorPage />} />
+          <Route path="/api" element={<ApiPage />} />
         </Routes>
       </Router>
   );
